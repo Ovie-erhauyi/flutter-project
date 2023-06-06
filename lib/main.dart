@@ -1,125 +1,783 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: _buildAppBar(),
+        body: SafeArea(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              ListView(
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                children: [
+                  rowOne(),
+                  rowTwo(),
+                  rowThree(),
+                  rowFour(),
+                  rowFive(),
+                  rowSix(),
+                  rowSeven(),
+                  rowEight(),
+                  rowNine(),
+                  rowTen(),
+                  rowEleven(),
+                  rowTwelve(),
+                ],
+              ),
+              Positioned(
+                bottom: 80,
+                right: 16,
+                child: ClipRRect(
+                  borderRadius:BorderRadius.vertical(
+                    top: Radius.circular(5.0),
+                    bottom: Radius.circular(5.0),
+                  ),
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+                    child: FloatingActionButton(
+                    onPressed: () {
+                      // Add your floating action button onPressed logic here
+                    },
+                    child: Icon(Icons.edit_outlined, color: Colors.black),
+                    backgroundColor: Colors.blue[50],
+                  ),
+                ),
+              ),
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+              Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey[50],
+                ),
+                constraints: BoxConstraints(maxWidth: 500),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.mark_email_unread,
+                      color: Colors.black,
+                      size: 35,
+                    ),
+                    Icon(
+                      Icons.video_call_outlined,
+                      color: Colors.black,
+                      size: 35,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
+    ),
+  );
 }
+
+AppBar _buildAppBar() {
+  return AppBar(
+    backgroundColor: Colors.white,
+    elevation: 0,
+    title: Container(
+      height: kToolbarHeight,
+      decoration: BoxDecoration(
+        color: Colors.blueGrey[50],
+        borderRadius: BorderRadius.circular(40.0),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+            icon: Icon(
+              Icons.menu,
+              color: Colors.black,
+              size: 30.0,
+            ),
+            onPressed: () {
+              // Add your menu icon onPressed logic here
+            },
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search in emails',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            child:CircleAvatar(
+              radius: 29,
+              backgroundImage: Image.asset("asset/images/pic.jpg").image,
+            )
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+Column rowOne() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/twitter.jpg"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Twitter",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "New login to Twitter...",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "16:35",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+Column rowTwo() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/link.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "European Leadership via...",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "June is the month of ...",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "15:35",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+Column rowThree() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/B.jpg"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Billings Team 2",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Here is your invoice",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "10:35",
+                  style: TextStyle(fontSize: 10),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+Column rowFour() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/D.jpg"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Deta",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "[action..]Deta Cloud is shutting..",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "11:00",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+
+Column rowFive() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/K.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "12:00",
+                  style: TextStyle(fontSize: 10),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+
+Column rowSix() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/K.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "14:35",
+                  style: TextStyle(fontSize: 10),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+
+Column rowSeven() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/H.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "18:35",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+
+Column rowEight() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/link.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "16:35",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+Column rowNine() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/twitter.jpg"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "19:35",
+                  style: TextStyle(fontSize: 10),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+
+
+
+Column rowEleven() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/B.jpg"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "17:35",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+Column rowTen() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/K.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "12:35",
+                  style: TextStyle(fontSize: 10),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+Column rowTwelve() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 29,
+                backgroundImage: AssetImage("asset/images/K.png"),
+              ),
+              SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Lora",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 5),
+                  const Text(
+                    "Hello! how are you?",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 5),
+            child: Column(
+              children: [
+                Text(
+                  "16:35",
+                  style: TextStyle(fontSize: 10),
+                ),
+                SizedBox(height: 15),
+                Icon(
+                  Icons.star_border_outlined,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        indent: 70,
+      ),
+    ],
+  );
+}
+
+
